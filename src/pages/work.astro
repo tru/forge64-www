@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { caseStudies } from "../data/work";
+---
+
+<Layout title="Work" description="Case studies: toolchain, compiler, and build-system work at Ubisoft, Plex, and the LLVM project.">
+  <section class="mx-auto max-w-3xl px-6 pt-16 pb-10">
+    <p class="text-sm font-medium tracking-wide uppercase text-[var(--color-accent)]">Work</p>
+    <h1 class="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">Case studies</h1>
+    <p class="mt-4 text-[var(--color-muted)] leading-relaxed">
+      A selection of the toolchain, compiler, and build-infrastructure work I've led — in AAA
+      games, commercial software, and the LLVM project itself.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 pb-20 space-y-10">
+    {
+      caseStudies.map((study) => (
+        <article class="border border-[var(--color-line)] rounded-lg p-6">
+          <p class="text-xs uppercase tracking-wide text-[var(--color-muted)]">
+            {study.org} · {study.period}
+          </p>
+          <h2 class="mt-2 text-xl font-medium">{study.title}</h2>
+          <p class="mt-3 text-[var(--color-muted)] leading-relaxed">{study.summary}</p>
+          <ul class="mt-4 space-y-1.5 text-sm">
+            {study.points.map((point) => (
+              <li class="flex gap-2">
+                <span class="text-[var(--color-accent)]">—</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </section>
+</Layout>

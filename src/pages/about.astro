@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const timeline = [
+  { org: "Larian Studios", role: "Build and Toolchain Engineer", period: "Jan 2026 – present" },
+  { org: "Forge64 Consulting AB", role: "Owner", period: "Dec 2025 – present" },
+  { org: "LLVM Project", role: "Release Manager", period: "Aug 2022 – present" },
+  { org: "Ubisoft Montréal", role: "Senior Generalist Programmer", period: "Feb 2022 – Dec 2025" },
+  { org: "Plex, Inc.", role: "Team Lead, Build Tools", period: "Sep 2017 – Feb 2022" },
+  { org: "Plex, Inc.", role: "Senior Engineer Lead", period: "Feb 2012 – Feb 2022" },
+  { org: "Purple Scout AB", role: "Project Manager", period: "Jan 2009 – Feb 2012" },
+  { org: "Procera Networks", role: "Senior Solutions Engineer", period: "2006 – Dec 2008" },
+  { org: "Netintact AB", role: "Professional Services Manager", period: "2002 – 2006" },
+];
+---
+
+<Layout title="About" description="About Tobias Hieta — toolchain, build-system, and compiler engineer, LLVM release manager, and owner of Forge64 Consulting AB.">
+  <section class="mx-auto max-w-3xl px-6 pt-16 pb-10">
+    <p class="text-sm font-medium tracking-wide uppercase text-[var(--color-accent)]">About</p>
+    <h1 class="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">Tobias Hieta</h1>
+    <p class="mt-2 text-[var(--color-muted)]">Toolchain, Build-System, and Compiler Developer · Gävle, Sweden</p>
+
+    <div class="mt-8 prose-body space-y-4 leading-relaxed">
+      <p>
+        I build toolchains. Currently a Build and Toolchain Engineer at Larian Studios, and owner
+        of Forge64 Consulting AB, where I help companies improve build infrastructure and
+        compile-time performance. I specialize in LLVM, CMake, FASTBuild, Sharpmake, and the rest
+        of the tooling needed to ship high-quality, performant C++ applications, drawing on a
+        background in AAA games and a strong connection to the LLVM community.
+      </p>
+      <p>
+        Since 2022 I've served as a co-release manager for the LLVM project — release manager
+        for LLVM 15.x, 17.x, and 19.x — handling triage, merges, and fix reviews for each release.
+        Before that, I spent ten years at Plex leading build tooling and engineering, and over
+        three years at Ubisoft Montréal maintaining the internal LLVM/Clang toolchain behind the
+        Anvil, Snowdrop, and Voyage engines, including work shipping Assassin's Creed Shadows.
+      </p>
+      <p>
+        I'm also a co-host and co-founder of <a class="text-[var(--color-accent)] hover:underline" href="https://kodsnack.se" target="_blank" rel="noopener">Kodsnack</a>,
+        one of the biggest Swedish-language developer podcasts, running since 2012, and a
+        Professional Scrum Master (PSM I).
+      </p>
+    </div>
+  </section>
+
+  <section class="border-t border-[var(--color-line)] bg-[var(--color-paper-soft)]">
+    <div class="mx-auto max-w-3xl px-6 py-14">
+      <h2 class="text-2xl font-semibold tracking-tight">Experience</h2>
+      <ol class="mt-8 space-y-6">
+        {
+          timeline.map((item) => (
+            <li class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 border-b border-[var(--color-line)] pb-6 last:border-0 last:pb-0">
+              <div>
+                <p class="font-medium">{item.org}</p>
+                <p class="text-sm text-[var(--color-muted)]">{item.role}</p>
+              </div>
+              <p class="text-sm text-[var(--color-muted)] whitespace-nowrap">{item.period}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-14">
+    <h2 class="text-2xl font-semibold tracking-tight">Elsewhere</h2>
+    <ul class="mt-6 space-y-2 text-sm">
+      <li><a class="text-[var(--color-accent)] hover:underline" href="https://www.linkedin.com/in/tobiashieta" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="text-[var(--color-accent)] hover:underline" href="https://github.com/tru" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="text-[var(--color-accent)] hover:underline" href="https://tobias.hieta.se/" target="_blank" rel="noopener">Blog</a></li>
+      <li><a class="text-[var(--color-accent)] hover:underline" href="https://kodsnack.se" target="_blank" rel="noopener">Kodsnack (podcast)</a></li>
+    </ul>
+  </section>
+</Layout>

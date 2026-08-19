@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { caseStudies } from "../data/work";
+
+const expertise = [
+  {
+    title: "LLVM & Clang toolchains",
+    body: "Standing up, maintaining, and modernizing internal Clang/LLVM toolchains — from upstream tracking to custom diagnostics and codegen work.",
+  },
+  {
+    title: "Build systems at scale",
+    body: "CMake, FASTBuild, Sharpmake, and Conan across large C++ codebases, tuned for compile-time and iteration speed.",
+  },
+  {
+    title: "Shipping AAA & commercial software",
+    body: "Hands-on experience taking build infrastructure from prototype to shipping on console, PC, and mobile — including AAA titles.",
+  },
+];
+---
+
+<Layout title="Home">
+  <section class="mx-auto max-w-5xl px-6 pt-16 pb-14">
+    <p class="text-sm font-medium tracking-wide uppercase text-[var(--color-accent)]">
+      Forge64 Consulting AB
+    </p>
+    <h1 class="mt-3 text-4xl md:text-5xl font-semibold tracking-tight max-w-3xl">
+      Toolchains, compilers, and build systems for teams that ship performant C++.
+    </h1>
+    <p class="mt-6 text-lg text-[var(--color-muted)] max-w-2xl">
+      I'm Tobias Hieta — a toolchain and build-system engineer with a background in AAA
+      games and a decade of LLVM release management. Forge64 helps companies improve
+      build infrastructure and compile-time performance, using LLVM, CMake, FASTBuild,
+      Sharpmake, and the rest of the modern C++ toolbox.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="/contact/"
+        class="rounded-md bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-opacity"
+      >
+        Get in touch
+      </a>
+      <a
+        href="/work/"
+        class="rounded-md border border-[var(--color-line)] px-5 py-2.5 text-sm font-medium hover:border-[var(--color-accent)] transition-colors"
+      >
+        See the work
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-[var(--color-line)] bg-[var(--color-paper-soft)]">
+    <div class="mx-auto max-w-5xl px-6 py-14">
+      <h2 class="text-2xl font-semibold tracking-tight">What I help with</h2>
+      <div class="mt-8 grid gap-8 md:grid-cols-3">
+        {
+          expertise.map((item) => (
+            <div>
+              <h3 class="font-medium">{item.title}</h3>
+              <p class="mt-2 text-sm text-[var(--color-muted)] leading-relaxed">{item.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 py-14">
+    <div class="flex items-baseline justify-between">
+      <h2 class="text-2xl font-semibold tracking-tight">Recent work</h2>
+      <a href="/work/" class="text-sm text-[var(--color-accent)] hover:underline">All case studies →</a>
+    </div>
+    <div class="mt-8 grid gap-8 md:grid-cols-3">
+      {
+        caseStudies.map((study) => (
+          <div class="border border-[var(--color-line)] rounded-lg p-5">
+            <p class="text-xs uppercase tracking-wide text-[var(--color-muted)]">
+              {study.org} · {study.period}
+            </p>
+            <h3 class="mt-2 font-medium">{study.title}</h3>
+            <p class="mt-2 text-sm text-[var(--color-muted)] leading-relaxed">{study.summary}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
