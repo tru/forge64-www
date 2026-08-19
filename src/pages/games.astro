@@ -13,31 +13,36 @@ import { games } from "../data/games";
     </p>
   </section>
 
-  <section class="mx-auto max-w-3xl px-6 pb-20 space-y-8">
+  <section class="mx-auto max-w-3xl px-6 pb-20 space-y-10">
     {
       games.map((game) => (
-        <article class="border border-[var(--color-line)] rounded-lg p-6 flex flex-col sm:flex-row gap-6">
-          <div class="shrink-0 w-full sm:w-32">
-            <div class="aspect-[3/4] w-full sm:w-32 rounded-md bg-[var(--color-paper-soft)] border border-[var(--color-line)] flex items-center justify-center overflow-hidden">
-              <img
-                src={game.boxArt}
-                alt={`${game.title} box art`}
-                class="w-full h-full object-cover"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-              />
-              <span class="hidden text-xs text-[var(--color-muted)] text-center px-2">Box art coming soon</span>
-            </div>
-          </div>
-          <div class="flex-1">
+        <article class="border border-[var(--color-line)] rounded-lg overflow-hidden">
+          <img src={game.boxArt} alt={`${game.title} key art`} class="w-full aspect-[616/353] object-cover" loading="lazy" />
+          <div class="p-6">
             <p class="text-xs uppercase tracking-wide text-[var(--color-muted)]">
               {game.year} · {game.role}
             </p>
-            <h2 class="mt-1 text-xl font-medium">{game.title}</h2>
-            <p class="mt-3 text-sm text-[var(--color-muted)] leading-relaxed">
-              {game.description && game.description.length > 0
-                ? game.description
-                : "Description coming soon."}
-            </p>
+            <div class="mt-1 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h2 class="text-xl font-medium">{game.title}</h2>
+              <a
+                href={game.trailerUrl}
+                target="_blank"
+                rel="noopener"
+                class="text-sm text-[var(--color-accent)] hover:underline whitespace-nowrap"
+              >
+                Watch trailer ↗
+              </a>
+            </div>
+            <p class="mt-3 text-sm text-[var(--color-muted)] leading-relaxed">{game.description}</p>
+            <p class="mt-4 text-sm font-medium">What I worked on</p>
+            <ul class="mt-2 space-y-1.5 text-sm">
+              {game.highlights.map((point) => (
+                <li class="flex gap-2">
+                  <span class="text-[var(--color-accent)]">—</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </article>
       ))
